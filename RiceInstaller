@@ -62,7 +62,7 @@ welcome() {
     printf "%b" "${BLD}${CGR}This script will install my dotfiles and this is what it will do:${CNC}
 
   ${BLD}${CGR}[${CYE}i${CGR}]${CNC} Install necessary official dependencies via pacman
-  ${BLD}${CGR}[${CYE}i${CGR}]${CNC} Install AUR dependencies via ${CBL}paru${CNC}
+  ${BLD}${CGR}[${CYE}i${CGR}]${CNC} Install AUR dependencies via ${CBL}yay${CNC}
   ${BLD}${CGR}[${CYE}i${CGR}]${CNC} Setup dotfiles configuration
   ${BLD}${CGR}[${CYE}i${CGR}]${CNC} Backup existing configurations (i3, polybar, etc...)
   ${BLD}${CGR}[${CYE}i${CGR}]${CNC} Enabling MPD service (Music player daemon)
@@ -142,15 +142,15 @@ install_dependencies() {
 
 install_aur_dependencies() {
     clear
-    logo "Installing AUR dependencies via paru..."
+    logo "Installing AUR dependencies via yay..."
     sleep 2
 
-    if ! command -v paru >/dev/null 2>&1 || ! paru --version >/dev/null 2>&1; then
-        printf "%b\n" "${BLD}${CYE}Installing PARU AUR helper...${CNC}"
-        rm -rf "$HOME/.paru_build"
-        git clone https://aur.archlinux.org/paru-bin.git "$HOME/.paru_build"
-        (cd "$HOME/.paru_build" && makepkg -si --noconfirm)
-        rm -rf "$HOME/.paru_build"
+    if ! command -v yay >/dev/null 2>&1 || ! yay --version >/dev/null 2>&1; then
+        printf "%b\n" "${BLD}${CYE}Installing YAY AUR helper...${CNC}"
+        rm -rf "$HOME/.yay_build"
+        git clone https://aur.archlinux.org/yay.git "$HOME/.yay_build"
+        (cd "$HOME/.yay_build" && makepkg -si --noconfirm)
+        rm -rf "$HOME/.yay_build"
     fi
 
     aur_dependencies="brave-origin-bin visual-studio-code-bin zapzap-bin stacer-bin eww-git xwinwrap-0.9-bin i3lock-color simple-mtpfs fzf-tab-git qogir-cursor-theme autotiling"
@@ -162,7 +162,7 @@ install_aur_dependencies() {
     # First pass
     for aur_pkg in $aur_dependencies; do
         sleep 0.50
-        if ! paru -S --skipreview --noconfirm --needed "$aur_pkg"; then
+        if ! yay -S --noconfirm --needed "$aur_pkg"; then
             failed_aur_deps="$failed_aur_deps $aur_pkg"
         fi
     done
@@ -174,7 +174,7 @@ install_aur_dependencies() {
 
         for aur_pkg in $failed_aur_deps; do
             sleep 0.50
-            if ! paru -S --skipreview --noconfirm --needed "$aur_pkg"; then
+            if ! yay -S --noconfirm --needed "$aur_pkg"; then
                 retry_aur_failed="$retry_aur_failed $aur_pkg"
             fi
         done
@@ -184,7 +184,7 @@ install_aur_dependencies() {
     if [ -n "$retry_aur_failed" ]; then
         printf "\n%b\n" "${BLD}${CRE}These dependencies could not be installed after two attempts:${CYE}${retry_aur_failed}${CNC}"
         printf "%b\n\n" "${BLD}${CBL}missing_apps.txt ${CYE}file was created on your ${CGR}HOME ${CYE}with the list."
-        printf "\nApps from AUR\n=======================\nInstall with paru command.\nThe following dependencies failed, please install manually:\n%s\n" "$retry_aur_failed" >> missing_apps.txt
+        printf "\nApps from AUR\n=======================\nInstall with yay command.\nThe following dependencies failed, please install manually:\n%s\n" "$retry_aur_failed" >> missing_apps.txt
     else
         if [ -z "$failed_aur_deps" ]; then
             printf "\n%b\n" "${BLD}${CGR}All dependencies were installed successfully.${CNC}"

@@ -9,7 +9,7 @@
 #   ✔ Used in a pacman hook to update the polybar-module/eww-poll. --sync-polybar
 #
 # Dependencies:
-#   → pacman-contrib, paru, polybar
+#   → pacman-contrib, yay, polybar
 #
 # Licensed under GPL-3.0 license
 # =============================================================
@@ -35,7 +35,7 @@ get_updates() {
 
     checkupdates >"$tmp_official" 2>/dev/null &
     pid_official=$!
-    paru -Qua >"$tmp_aur" 2>/dev/null &
+    yay -Qua >"$tmp_aur" 2>/dev/null &
     pid_aur=$!
 
     wait "$pid_official"; official_status=$?
