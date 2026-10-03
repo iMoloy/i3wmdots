@@ -238,7 +238,7 @@ backup_existing_config() {
     sleep 1
 
     # Dirs in ~/.config/
-    cfg_dir="i3 clipcat picom rofi eww i3 dunst kitty polybar gtk-3.0 ncmpcpp zsh mpd paru"
+    cfg_dir="i3 clipcat picom rofi eww i3 dunst kitty polybar gtk-3.0 ncmpcpp zsh mpd yay"
     for cfg in $cfg_dir; do
         [ -d "$HOME/.config/$cfg" ] && mv "$HOME/.config/$cfg" "$backup_folder"
     done
@@ -269,7 +269,7 @@ install_dotfiles() {
     repo_dir="$HOME/.local/share/i3wmdots"
 
     # Copy files to ~/.config
-    dots_config_dir="i3 clipcat gtk-3.0 kitty mpd ncmpcpp paru systemd starship.toml"
+    dots_config_dir="i3 clipcat gtk-3.0 kitty mpd ncmpcpp yay systemd starship.toml"
     for dots_cfg in $dots_config_dir; do
         if [ -e "$repo_dir/config/$dots_cfg" ]; then
             cp -R "$repo_dir/config/$dots_cfg" "$HOME/.config/"
