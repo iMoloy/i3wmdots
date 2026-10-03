@@ -1,0 +1,42 @@
+#!/bin/sh
+# =================================================================
+# Glass Workspaces for i3wm
+# =================================================================
+
+print_workspaces() {
+    buf=""
+    workspaces=$(i3-msg -t get_workspaces)
+    
+    for ws in 1 2 3 4 5; do
+        is_focused=$(echo "$workspaces" | jq -r ".[] | select(.name==\"$ws\") | .focused")
+        is_urgent=$(echo "$workspaces" | jq -r ".[] | select(.name==\"$ws\") | .urgent")
+        exists=$(echo "$workspaces" | jq -r ".[] | select(.name==\"$ws\") | .name")
+
+        case $ws in
+            1) icon="󰨞" ;;
+            2) icon="󰖟" ;;
+            3) icon="󰞷" ;;
+            4) icon="󰉋" ;;
+            5) icon="󰙯" ;;
+            *) icon="󰝦" ;;
+        esac
+
+        if [ "$is_focused" = "true" ]; then
+            class="workspace-focused"
+        elif [ "$exists" = "$ws" ]; then
+            class="workspace-occupied"
+        else
+            class="workspace-empty"
+        fi
+
+        buf="${buf}(eventbox :cursor \"pointer\" (button :class \"$class\" :halign \"center\" :onclick \"i3-msg workspace $ws\" \"$icon\"))"
+    done
+
+    echo "(box :orientation \"v\" :class \"works\" :halign \"center\" :valign \"center\" :space-evenly false :vexpand false :hexpand false $buf)"
+}
+
+print_workspaces
+
+i3-msg subscribe workspace | while read -r _ ; do
+    print_workspaces
+done

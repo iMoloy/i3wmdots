@@ -1,0 +1,57 @@
+format = """
+[╭─  ](bold blue)\
+$directory\
+$git_branch\
+$git_status\
+$nodejs\
+$rust\
+$golang\
+$python\
+$docker_context\
+$fill\
+$cmd_duration\
+$time
+$character"""
+
+[fill]
+symbol = " "
+
+[directory]
+style = "bold cyan"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = ""
+style = "bold purple"
+format = "[[ $symbol $branch ](fg:#cba6f7 bg:none)]($style)"
+
+[git_status]
+style = "bold red"
+format = '[[($all_status$ahead_behind )](fg:#f38ba8 bg:none)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bold green"
+format = "[[ $symbol ($version) ](fg:#a6e3a1 bg:none)]($style)"
+
+[python]
+symbol = ""
+style = "bold yellow"
+format = "[[ $symbol ($version) ](fg:#f9e2af bg:none)]($style)"
+
+[time]
+disabled = false
+time_format = "%I:%M %p"
+style = "bold #6c7086"
+format = "[ $time ]($style)"
+
+[cmd_duration]
+min_time = 1000
+format = "[  $duration ](bold yellow)"
+
+[character]
+success_symbol = "[╰─❯](bold green)"
+error_symbol = "[╰─❯](bold red)"
+vicmd_symbol = "[╰─❮](bold green)"

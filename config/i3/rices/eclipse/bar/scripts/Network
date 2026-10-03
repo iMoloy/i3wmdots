@@ -1,0 +1,67 @@
+#!/bin/sh
+# =============================================================
+# Checks if you are connected to the internet and set values for eww bar.
+# 23.09.2023 13:39:59
+#
+# Licensed under GPL-3.0 license
+# =============================================================
+
+is_online() {
+    ping -c 1 -W 1 archlinux.org >/dev/null 2>&1
+}
+
+iface=$(ip route show default 2>/dev/null | awk '{print $5; exit}')
+
+ICON="images/no-wifi.png"
+STATUS="Offline"
+
+if is_online; then
+    ICON="images/wifi.png"
+
+    case "$iface" in
+        e*) STATUS="$iface" ;;  # ethernet
+        *)
+            if command -v nmcli >/dev/null 2>&1; then
+                STATUS=$(nmcli -t -f active,ssid dev wifi show | sed -n '1{s/SSID: //p}')
+            fi
+            ;;
+    esac
+fi
+
+get_speed() {
+    local iface cache rx_now time_now rx_old time_old rx_diff time_diff speed
+    iface=$(ip route show default 2>/dev/null | awk '{print $5; exit}')
+    [ -z "$iface" ] && echo "0B" && return
+
+    cache="/tmp/net_speed_${iface}.cache"
+    rx_now=$(grep "$iface:" /proc/net/dev 2>/dev/null | awk '{print $2}')
+    time_now=$(date +%s%N)
+
+    if [ -f "$cache" ]; then
+        read -r time_old rx_old < "$cache"
+        time_diff=$(( (time_now - time_old) / 1000000 ))
+        if [ "$time_diff" -gt 200 ]; then
+            rx_diff=$(( (rx_now - rx_old) * 1000 / time_diff ))
+            if [ "$rx_diff" -ge 1048576 ]; then
+                speed=$(awk "BEGIN {printf \"%.1fM\", $rx_diff / 1048576}")
+            elif [ "$rx_diff" -ge 1024 ]; then
+                speed=$(awk "BEGIN {printf \"%dK\", $rx_diff / 1024}")
+            else
+                speed="${rx_diff}B"
+            fi
+            echo "$time_now $rx_now" > "$cache"
+            echo "$speed"
+            return
+        fi
+    fi
+
+    echo "$time_now $rx_now" > "$cache"
+    echo "0K"
+}
+
+case "$1" in
+    --stat) echo "$STATUS" ;;
+    --icon) echo "$ICON" ;;
+    --speed) get_speed ;;
+esac
+

@@ -1,0 +1,66 @@
+#!/bin/sh
+# =============================================================
+# Get volume info for eww bar.
+# 23.09.2023 12:30:34
+#
+# Licensed under GPL-3.0 license
+# =============================================================
+
+get_vol () {
+    volumen=$(pamixer --get-volume-human 2>/dev/null | tr -d '%')
+    [ "$volumen" = "muted" ] && echo "0" || echo "${volumen}"
+}
+
+get_icon () {
+    if [ "$(pamixer --get-mute 2>/dev/null)" = "true" ]; then
+        echo "images/mute.png"
+    else
+        vol=$(get_vol)
+        echo "images/$( [ "$vol" = "0" ] && echo "mute" || echo "volume" ).png"
+    fi
+}
+
+toggle_mute () {
+    pamixer -t
+    read -r rice < "$HOME/.config/i3/.rice"
+    if [ -d "$HOME/.config/i3/rices/${rice}/bar" ]; then
+        eww -c "$HOME/.config/i3/rices/${rice}/bar" update volume_value=$(get_vol) 2>/dev/null
+        eww -c "$HOME/.config/i3/rices/${rice}/bar" update volume_icon=$(get_icon) 2>/dev/null
+        eww -c "$HOME/.config/i3/rices/${rice}/bar" update volume_muted=$(pamixer --get-mute 2>/dev/null) 2>/dev/null
+    fi
+}
+
+change_vol () {
+    case "$1" in
+        up|--inc)   pamixer -u -i 3 ;;
+        down|--dec) pamixer -u -d 3 ;;
+    esac
+    read -r rice < "$HOME/.config/i3/.rice"
+    if [ -d "$HOME/.config/i3/rices/${rice}/bar" ]; then
+        eww -c "$HOME/.config/i3/rices/${rice}/bar" update volume_value=$(get_vol) 2>/dev/null
+        eww -c "$HOME/.config/i3/rices/${rice}/bar" update volume_icon=$(get_icon) 2>/dev/null
+        eww -c "$HOME/.config/i3/rices/${rice}/bar" update volume_muted=false 2>/dev/null
+    fi
+}
+
+change_mic () {
+    case "$1" in
+        up|--inc)   pamixer --default-source -u -i 3 ;;
+        down|--dec) pamixer --default-source -u -d 3 ;;
+    esac
+    read -r rice < "$HOME/.config/i3/.rice"
+    if [ -d "$HOME/.config/i3/rices/${rice}/bar" ]; then
+        eww -c "$HOME/.config/i3/rices/${rice}/bar" update mic_value=$(pamixer --default-source --get-volume 2>/dev/null) 2>/dev/null
+        eww -c "$HOME/.config/i3/rices/${rice}/bar" update mic_muted=false 2>/dev/null
+    fi
+}
+
+case "$1" in
+    --vol) get_vol ;;
+    --icon) get_icon ;;
+    --toggle-muted) toggle_mute ;;
+    --scroll|scroll) change_vol "$2" ;;
+    --scroll-mic|scroll-mic) change_mic "$2" ;;
+    --inc) change_vol up ;;
+    --dec) change_vol down ;;
+esac

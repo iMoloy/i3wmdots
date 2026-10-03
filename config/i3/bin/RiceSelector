@@ -1,0 +1,42 @@
+#!/bin/sh
+# =============================================================
+# Date:    27.06.2025 11:14:42
+#
+#
+# Licensed under GPL-3.0 license
+# =============================================================
+
+# Some vars
+i3_dir="$HOME/.config/i3"
+read -r current_rice < "$i3_dir"/.rice
+
+# List rices (rutas completas; sin forks de basename)
+rices=$(find "$i3_dir/rices/" -mindepth 1 -maxdepth 1 -type d ! -name ".*" | sort)
+
+IFS='
+'
+
+# Find current rice
+selected_index=-1
+index=0
+for rice in $rices; do
+    [ "${rice##*/}" = "$current_rice" ] && { selected_index=$index; break; }
+    index=$((index + 1))
+done
+
+# Show the rofi selection menu.
+selected=$(
+    for rice in $rices; do
+        name=${rice##*/}
+        printf "%s\000icon\037%s/preview.webp\n" "$name" "$rice"
+    done | rofi -dmenu -p "RiceSelector" \
+                -theme "$i3_dir/config/rofi-themes/RiceSelector.rasi" \
+                -selected-row "$selected_index"
+)
+unset IFS
+
+# If a valid option was selected, write the value to the configuration file and change theme.
+if [ -n "$selected" ] && [ "$selected" != "$current_rice" ]; then
+    echo "$selected" > "$i3_dir"/.rice
+    "${i3_dir}"/bin/Theme.sh
+fi

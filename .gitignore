@@ -1,0 +1,22 @@
+# Zsh runtime caches and history
+zhistory
+*.zwc
+*zcompdump*
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+
+# Editor temporary & backup files
+*.swp
+*.swo
+*~
+*.bak
+.DS_Store
+
+# I3 runtime state markers
+.first_run_done
+.sys
+
+# Logs
+*.log

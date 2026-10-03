@@ -1,0 +1,446 @@
+* {
+  all: unset;
+  font-family: "JetBrainsMono NF";
+}
+
+// Apple Glass Palette Tokens
+$apple-white: #ffffff;
+$apple-silver: #e5e5ea;
+$apple-gray: #a1a1a6;
+$apple-dim: rgba(255, 255, 255, 0.32);
+$apple-blue: #0a84ff;
+$apple-orange: #ff9f0a;
+$apple-green: #30d158;
+$apple-red: #ff453a;
+
+// Frosted Acrylic Glass
+$glass-bg: rgba(20, 20, 26, 0.65);
+$glass-border: rgba(255, 255, 255, 0.16);
+$glass-hover-bg: rgba(255, 255, 255, 0.12);
+$glass-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
+
+window {
+  background-color: transparent;
+}
+
+// The Bar (Transparent Right Dock)
+.eww_bar {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 1px 0;
+}
+
+// Launcher (Skull Icon)
+.launcher_icon {
+  color: $apple-white;
+  font-family: "JetBrainsMono NF";
+  font-size: 22px;
+  padding: 3px 0;
+  margin: 0;
+  min-width: 38px;
+  transition: all 0.2s ease;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+
+  &:hover {
+    color: $apple-blue;
+  }
+}
+
+// Workspaces (Apple Glass Pill)
+.works {
+  font-family: "JetBrainsMono NF";
+  padding: 3px 0;
+  background-color: $glass-bg;
+  border: 1px solid $glass-border;
+  box-shadow: $glass-shadow;
+  border-radius: 11px;
+  min-width: 38px;
+}
+
+.workspace-focused,
+.workspace-occupied,
+.workspace-empty {
+  font-family: "JetBrainsMono NF";
+  font-size: 17px;
+  min-width: 29px;
+  min-height: 28px;
+  padding: 0;
+  margin: 1.5px 3px;
+  border-radius: 7px;
+}
+
+.workspace-focused {
+  color: $apple-white;
+  background-color: $apple-blue;
+}
+
+.workspace-occupied {
+  color: $apple-white;
+
+  &:hover {
+    background-color: $glass-hover-bg;
+  }
+}
+
+.workspace-empty {
+  color: $apple-dim;
+
+  &:hover {
+    background-color: $glass-hover-bg;
+    color: $apple-silver;
+  }
+}
+
+// Common Glass Icon Buttons
+.glass_icon {
+  font-family: "Material Design Icons Desktop";
+  font-size: 18px;
+  color: $apple-white;
+  padding: 0;
+  margin: 0;
+  transition: all 0.2s ease;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+
+  &:hover {
+    color: $apple-blue;
+  }
+
+  &.vol_icon {
+    font-size: 11px;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    &:hover {
+      color: $apple-blue;
+    }
+  }
+
+  &.mic_icon {
+    font-size: 11px;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    &:hover {
+      color: $apple-orange;
+    }
+  }
+
+  &.wifi_icon {
+    font-family: "Material Design Icons Desktop";
+    font-size: 20px;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    &:hover {
+      color: $apple-blue;
+    }
+  }
+
+  &.pacman_icon {
+    font-family: "Material Design Icons Desktop";
+    font-size: 19px;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    &:hover {
+      color: $apple-blue;
+    }
+  }
+}
+
+.power_main_btn {
+  font-family: "Material Design Icons Desktop";
+  font-size: 22px;
+  font-weight: 900;
+  color: #ff0000;
+  padding: 3px 0;
+  margin: 0;
+  transition: all 0.2s ease;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+
+  &:hover {
+    color: #ff4d4d;
+  }
+}
+
+// Sound Widget (Speaker + Mic)
+.sound_box {
+  padding: 0;
+}
+
+.sound_sliders {
+  padding: 1px 0;
+}
+
+scale {
+  all: unset;
+  margin: 0;
+  padding: 0;
+}
+
+scale trough {
+  all: unset;
+  background-color: rgba(255, 255, 255, 0.14);
+  border-radius: 3.5px;
+  min-height: 28px;
+  min-width: 6px;
+  margin: 0;
+}
+
+.volbar trough highlight {
+  background-color: $apple-blue;
+  border-radius: 3.5px;
+}
+
+.micbar trough highlight {
+  background-color: $apple-orange;
+  border-radius: 3.5px;
+}
+
+.cpubar trough highlight {
+  background-color: #bf5af2;
+  border-radius: 3.5px;
+}
+
+.rambar trough highlight {
+  background-color: #ff375f;
+  border-radius: 3.5px;
+}
+
+// Net Speed
+.netspeed_box {
+  margin: 1px 0;
+}
+
+.netspeed_text {
+  font-size: 12px;
+  font-weight: 800;
+  color: $apple-white;
+}
+
+// Battery Box
+.battery_box {
+  padding: 1px 0;
+}
+
+.apple_battery_img {
+  margin: 2px 0 1px 0;
+}
+
+.battery_percent_text {
+  font-size: 12px;
+  font-weight: 800;
+  color: $apple-white;
+  margin-top: 1px;
+}
+
+// Updates Box
+.pacman_box {
+  padding: 0;
+}
+
+.updates_text {
+  font-size: 12px;
+  font-weight: 800;
+  color: $apple-white;
+  margin-top: 1px;
+}
+
+// Control Card (Apple Glass Pill)
+.control {
+  padding: 4px 0;
+  background-color: $glass-bg;
+  border: 1px solid $glass-border;
+  box-shadow: $glass-shadow;
+  border-radius: 11px;
+  min-width: 38px;
+}
+
+// Date Card (Apple Glass Pill)
+.date_card {
+  background-color: $glass-bg;
+  border: 1px solid $glass-border;
+  box-shadow: $glass-shadow;
+  border-radius: 11px;
+  padding: 3px 0;
+  min-width: 38px;
+}
+
+.day_text {
+  font-size: 12px;
+  font-weight: 800;
+  color: $apple-white;
+  margin: 0;
+}
+
+.date_text {
+  font-size: 13px;
+  font-weight: 800;
+  color: $apple-white;
+  margin: 0;
+}
+
+.month_text {
+  font-size: 12px;
+  font-weight: 800;
+  color: $apple-white;
+  margin: 0;
+}
+
+// Time Card (12h Apple Glass Pill)
+.time_card {
+  background-color: $glass-bg;
+  border: 1px solid $glass-border;
+  box-shadow: $glass-shadow;
+  border-radius: 11px;
+  padding: 3px 0;
+  min-width: 38px;
+}
+
+.time_hour {
+  font-size: 13px;
+  font-weight: 800;
+  color: $apple-white;
+  margin: 0;
+}
+
+.time_min {
+  font-size: 13px;
+  font-weight: 800;
+  color: $apple-white;
+  margin: 0;
+}
+
+.time_ampm {
+  font-size: 11px;
+  font-weight: 800;
+  color: $apple-white;
+  margin: 0;
+}
+
+// System Resource Card (Apple Glass CPU & RAM)
+.sys_card {
+  background-color: $glass-bg;
+  border: 1px solid $glass-border;
+  box-shadow: $glass-shadow;
+  border-radius: 11px;
+  padding: 3px 0;
+  min-width: 38px;
+}
+
+.sys_sliders {
+  padding: 1px 0;
+}
+
+.sys_icons {
+  padding-top: 1px;
+}
+
+.sys_icon {
+  min-width: 10px;
+  color: $apple-white;
+  padding: 0;
+  margin: 0;
+
+  &.cpu_icon {
+    font-family: "JetBrainsMono NF";
+    font-size: 9px;
+    color: $apple-white;
+  }
+
+  &.ram_icon {
+    font-family: "JetBrainsMono NF";
+    font-size: 8px;
+    color: $apple-white;
+  }
+}
+
+// Music Card (Apple Glass Pill)
+.music_card {
+  background-color: $glass-bg;
+  border: 1px solid $glass-border;
+  box-shadow: $glass-shadow;
+  border-radius: 11px;
+  padding: 3px 0;
+  min-width: 38px;
+}
+
+.music_btn {
+  font-family: "Material Design Icons Desktop";
+  font-size: 16px;
+  color: $apple-gray;
+  padding: 1.5px 0;
+  margin: 0;
+
+  &:hover {
+    color: $apple-white;
+  }
+}
+
+.music_btn_play {
+  font-family: "Material Design Icons Desktop";
+  font-size: 18px;
+  color: $apple-white;
+  padding: 1.5px 0;
+  margin: 0;
+
+  &.active {
+    color: $apple-blue;
+  }
+
+  &:hover {
+    color: $apple-blue;
+  }
+}
+
+// Power Button Box
+.power_box {
+  min-width: 38px;
+  padding: 1px 0;
+}
+
+// System Tray
+.tray menu {
+  padding: 6px 6px;
+  background-color: rgba(22, 22, 28, 0.95);
+  border: 1px solid $glass-border;
+  border-radius: 10px;
+  box-shadow: $glass-shadow;
+
+  > menuitem {
+    font-family: "JetBrainsMono NF";
+    font-size: 13px;
+    padding: 3px 8px;
+    color: $apple-white;
+
+    &:disabled label {
+      color: $apple-dim;
+    }
+
+    &:hover {
+      background-color: $apple-blue;
+      color: $apple-white;
+      border-radius: 6px;
+    }
+  }
+
+  separator {
+    background-color: $glass-border;
+    padding-top: 1px;
+
+    &:last-child {
+      padding: unset;
+    }
+  }
+}
