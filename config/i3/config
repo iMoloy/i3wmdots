@@ -189,9 +189,8 @@ assign [class="(?i)Alacritty"] $ws3
 assign [class="(?i)Thunar"] $ws4
 assign [class="(?i)discord"] $ws5
 
-# Gaps
-gaps inner 5
-gaps outer 5
+# Theme Integration
+include ~/.config/i3/config_dir/theme.conf
 
 # Autostart applications
 exec_always --no-startup-id autotiling

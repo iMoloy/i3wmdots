@@ -1,6 +1,6 @@
 #!/bin/sh
 
-_write "$HOME/.config/i3/config/rofi-themes/shared.rasi" <<-EOF
+_write "$HOME/.config/i3/config_dir/rofi-themes/shared.rasi" <<-EOF
 * {
     font: "${rofi_font}";
     background: ${rofi_background};

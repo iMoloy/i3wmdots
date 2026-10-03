@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Set the gtk theme corresponding to rice
-sed -i "$HOME"/.config/i3/config/xsettingsd \
+sed -i "$HOME"/.config/i3/config_dir/xsettingsd \
     -e "s|Net/ThemeName .*|Net/ThemeName \"$gtk_theme\"|" \
     -e "s|Net/IconThemeName .*|Net/IconThemeName \"$gtk_icons\"|" \
     -e "s|Gtk/CursorThemeName .*|Gtk/CursorThemeName \"$gtk_cursor\"|"

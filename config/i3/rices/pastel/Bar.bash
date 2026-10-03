@@ -6,7 +6,7 @@ generate_eww_workspaces() {
     local listen_workspaces widgets workspace_widgets
 
     eww_file="${HOME}/.config/i3/rices/${RICE}/bar/workspaces.yuck"
-    monitors=$(i3-msg query -M --names)
+    monitors=$(i3-msg -t get_outputs | jq -r '.[].name')
     count=0
     listen_workspaces=""
     widgets=""
@@ -29,7 +29,7 @@ generate_eww_workspaces() {
 
 generate_eww_workspaces
 
-for m in $(i3-msg query -M --names); do
+for m in $(i3-msg -t get_outputs | jq -r '.[].name'); do
     eww -c "${HOME}/.config/i3/rices/${RICE}/bar" open bar --id "$m" --arg monitor="$m" --toggle
 done
 

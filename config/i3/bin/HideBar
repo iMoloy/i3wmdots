@@ -44,7 +44,7 @@ toggle_bar() {
         if [ "$action" = "hide" ]; then
             eww -c "$eww_bar_path" close-all
         else
-            for m in $(i3-msg query -M --names); do
+            for m in $(i3-msg -t get_outputs | jq -r '.[].name'); do
                 eww -c "$eww_bar_path" open bar --id "$m" --arg monitor="$m"
             done
         fi

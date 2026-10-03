@@ -1,7 +1,9 @@
-#!bin/sh
+#!/bin/sh
 
+mkdir -p "$HOME/.config/ghostty"
 sed -i "s|^background-opacity = .*|background-opacity = ${P_TERM_OPACITY}|" "$HOME/.config/ghostty/config"
 
+_write "$HOME/.config/ghostty/theme" <<-EOF
 # Colors generated for ${RICE} theme.
 
 background = ${bg}
