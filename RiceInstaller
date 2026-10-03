@@ -96,7 +96,7 @@ install_dependencies() {
     sleep 2
 
     sudo pacman -Syy
-    dependencies="base-devel bat brightnessctl i3 clipcat discord dunst eza fcitx5 fcitx5-configtool fcitx5-gtk xwallpaper fzf git gvfs-mtp imagemagick jq jgmenu kitty libwebp maim micro mpc mpd mpv ncmpcpp noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra npm pacman-contrib pamixer papirus-icon-theme pavucontrol picom playerctl polybar lxsession python-gobject qt6-multimedia-ffmpeg qt6-svg qt6-virtualkeyboard redshift rofi rust sddm steam i3 telegram-desktop thunar ttf-jetbrains-mono ttf-jetbrains-mono-nerd tumbler webp-pixbuf-loader xclip xcolor xdg-user-dirs xdotool xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot xorg-xwininfo xorg-xrdb xsettingsd zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting starship"
+    dependencies="base-devel bat brightnessctl i3 clipcat discord dunst eza fcitx5 fcitx5-configtool fcitx5-gtk xwallpaper fzf git gvfs-mtp imagemagick jq jgmenu kitty libwebp maim micro mpc mpd mpv ncmpcpp noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra npm pacman-contrib pamixer papirus-icon-theme pavucontrol picom playerctl polybar lxsession python-gobject qt6-multimedia-ffmpeg qt6-svg qt6-virtualkeyboard redshift rofi rust sddm i3 telegram-desktop thunar ttf-jetbrains-mono ttf-jetbrains-mono-nerd tumbler webp-pixbuf-loader xclip xcolor xdg-user-dirs xdotool xorg-xdpyinfo xorg-xkill xorg-xprop xorg-xrandr xorg-xsetroot xorg-xwininfo xorg-xrdb xsettingsd zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting starship"
 
     # Arrays temporales
     failed_deps=""
@@ -145,7 +145,7 @@ install_aur_dependencies() {
 
     if ! command -v paru >/dev/null 2>&1; then
         printf "%b\n" "${BLD}${CYE}Installing PARU AUR helper...${CNC}"
-        git clone https://aur.archlinux.org/paru-bin.git "$HOME/.paru_build"
+        git clone https://aur.archlinux.org/paru.git "$HOME/.paru_build"
         (cd "$HOME/.paru_build" && makepkg -si --noconfirm)
         rm -rf "$HOME/.paru_build"
     fi
@@ -200,6 +200,14 @@ clone_dotfiles() {
     timestamp=$(date +"%Y%m%d-%H%M%S")
     sleep 2
 
+    # Handle existing repository
+    if [ -d "$repo_dir" ]; then
+        backup_dir="${repo_dir}_$timestamp"
+        printf "%b\n" "${BLD}${CYE}Existing repository found - renaming to: ${CBL}${backup_dir}${CNC}"
+
+        mv -v "$repo_dir" "$backup_dir"
+    fi
+
     # If running from within an already existing clone containing config and misc
     script_dir="$(cd "$(dirname "$0")" && pwd)"
     if [ -d "$script_dir/config" ] && [ -d "$script_dir/misc" ]; then
@@ -208,14 +216,6 @@ clone_dotfiles() {
         cp -R "$script_dir/." "$repo_dir/"
         sleep 2
         return 0
-    fi
-
-    # Handle existing repository
-    if [ -d "$repo_dir" ]; then
-        backup_dir="${repo_dir}_$timestamp"
-        printf "%b\n" "${BLD}${CYE}Existing repository found - renaming to: ${CBL}${backup_dir}${CNC}"
-
-        mv -v "$repo_dir" "$backup_dir"
     fi
 
     # Clone new repository
@@ -318,7 +318,7 @@ install_dotfiles() {
 configure_services() {
     clear
     logo "Configuring Services"
-    picom_config="$HOME/.config/i3/config/picom/picom.conf"
+    picom_config="$HOME/.config/i3/config_dir/picom/picom.conf"
     sleep 2
 
     # MPD Service Management
