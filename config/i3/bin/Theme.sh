@@ -17,7 +17,7 @@ read -r RICE < "$HOME"/.config/i3/.rice
 # Load theme configuration
 . "$HOME"/.config/i3/rices/"$RICE"/theme-config.bash
 # Path to modules dir
-MODULE_DIR="$HOME/.config/i3/config/modules"
+MODULE_DIR="$HOME/.config/i3/config_dir/modules"
 
 # Function to wait for processes to finish correctly
 wait_for_termination() {

@@ -33,7 +33,7 @@ show_rofi_menu() {
         -p "Keyboard Layout" \
         -mesg "Current layout --> $CURRENT" \
         -markup-rows \
-        -theme "$HOME/.config/i3/config/rofi-themes/Keyboard.rasi"
+        -theme "$HOME/.config/i3/config_dir/rofi-themes/Keyboard.rasi"
 }
 
 # Select and apply the layout

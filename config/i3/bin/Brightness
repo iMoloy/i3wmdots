@@ -15,7 +15,7 @@
 # Licensed under GPL-3.0 license
 # =============================================================
 
-DIR="$HOME/.config/i3/config/assets"
+DIR="$HOME/.config/i3/config_dir/assets"
 BRIGHTNESS_STEPS=5
 MIN_BRIGHTNESS=2
 

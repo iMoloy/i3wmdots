@@ -12,7 +12,7 @@
 # Here the cover image will be saved.
 Cover=/tmp/cover.png
 # if cover not found in metadata use this instead
-bkpCover=~/.config/i3/config/assets/fallback.webp
+bkpCover=~/.config/i3/config_dir/assets/fallback.webp
 # mpd music directory for mpd clients.
 mpddir=~/Music
 LAST_SONG_FILE="/tmp/last_song.txt"

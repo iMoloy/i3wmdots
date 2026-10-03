@@ -104,4 +104,4 @@ ENGINE="Default"
 
 CUSTOM_DIR="/home/moy/Pictures/Wallpapers"
 DEFAULT_WALL="/home/moy/.config/i3/rices/dracula/walls/Anime-Room.png"
-ANIMATED_WALL="$HOME/.config/i3/config/assets/animated_wall.mp4"
+ANIMATED_WALL="$HOME/.config/i3/config_dir/assets/animated_wall.mp4"

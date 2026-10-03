@@ -44,7 +44,7 @@ rofi_cmd() {
         -p Screenshot \
         -mesg "Directory :: $dir" \
         -markup-rows \
-        -theme "$HOME"/.config/i3/config/rofi-themes/Screenshot.rasi
+        -theme "$HOME"/.config/i3/config_dir/rofi-themes/Screenshot.rasi
 }
 
 run_rofi() {
@@ -92,7 +92,7 @@ countdown() {
     local sec="$1"
 
     while [ "$sec" -ge 1 ]; do
-        dunstify -r 345 -t 1100 -i "$HOME/.config/i3/config/assets/screenshot.png" "Taking shot in : $sec"
+        dunstify -r 345 -t 1100 -i "$HOME/.config/i3/config_dir/assets/screenshot.png" "Taking shot in : $sec"
         sleep 1
         sec=$((sec - 1))
     done

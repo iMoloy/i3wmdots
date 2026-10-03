@@ -7,7 +7,7 @@
 # =============================================================
 
 # Icon directory
-vol_dir="$HOME/.config/i3/config/assets"
+vol_dir="$HOME/.config/i3/config_dir/assets"
 
 notify() {
     dunstify -u low -h string:x-dunst-stack-tag:cvolum "$@"

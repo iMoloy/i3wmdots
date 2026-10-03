@@ -7,7 +7,7 @@
 # =============================================================
 
 SCRATCHPAD_NAME="i3-scratch"
-CFG_TERM="$HOME/.config/i3/config/.term"
+CFG_TERM="$HOME/.config/i3/config_dir/.term"
 read -r MY_TERM < "$CFG_TERM"
 
 # Check if a scratchpad terminal is running

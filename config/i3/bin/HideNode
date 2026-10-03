@@ -12,7 +12,7 @@
 # =============================================================
 
 THUMB_DIR="/tmp/Minimize_thumbs"
-THEME="$HOME/.config/i3/config/rofi-themes/Hide.rasi"
+THEME="$HOME/.config/i3/config_dir/rofi-themes/Hide.rasi"
 mkdir -p "$THUMB_DIR"
 
 hide() {

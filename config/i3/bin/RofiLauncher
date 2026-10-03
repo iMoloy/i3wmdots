@@ -9,13 +9,13 @@
 # =============================================================
 
 # Main vars
-cfgStyle="$HOME/.config/i3/config/.launcher"
+cfgStyle="$HOME/.config/i3/config_dir/.launcher"
 [ -f "$cfgStyle" ] || echo "1" > "$cfgStyle"
 read -r current_style < "$cfgStyle"
 
 # Paths
-styleDir="$HOME/.config/i3/config/rofi-themes"
-rofiAssetDir="$HOME/.config/i3/config/assets"
+styleDir="$HOME/.config/i3/config_dir/rofi-themes"
+rofiAssetDir="$HOME/.config/i3/config_dir/assets"
 
 # Function to select the styles
 choose_launcher_style() {

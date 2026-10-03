@@ -18,8 +18,8 @@
 # Licensed under GPL-3.0 license
 # =============================================================
 
-CONFIG_FILE="$HOME/.config/i3/config/system.ini"
-SFILE="$HOME/.config/i3/config/.sys"
+CONFIG_FILE="$HOME/.config/i3/config_dir/system.ini"
+SFILE="$HOME/.config/i3/config_dir/.sys"
 
 # Wait until the default route is up.
 # Polls every 250ms for up to 5s, and still tolerates a slow NetworkManager start.

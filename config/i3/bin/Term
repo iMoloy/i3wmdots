@@ -10,8 +10,8 @@
 # Licensed under GPL-3.0 license
 # =============================================================
 
-CFG_TERM="$HOME/.config/i3/config/.term"
-ROFI_THEME="$HOME/.config/i3/config/rofi-themes/TermSelector.rasi"
+CFG_TERM="$HOME/.config/i3/config_dir/.term"
+ROFI_THEME="$HOME/.config/i3/config_dir/rofi-themes/TermSelector.rasi"
 
 [ -f "$CFG_TERM" ] || echo "alacritty" > "$CFG_TERM"
 
@@ -26,7 +26,7 @@ Ghostty"
     current_term=$(tr '[:upper:]' '[:lower:]' < "$CFG_TERM")
 
     # Directory where icons are stored
-    iconDir="$HOME/.config/i3/config/assets"
+    iconDir="$HOME/.config/i3/config_dir/assets"
 
     index=0
     selected_index=-1

@@ -18,7 +18,7 @@ rofi_cmd() {
 	rofi -dmenu \
 		-p "Goodbye ${USER}" \
 		-mesg "Uptime: $(uptime -p | sed -e 's/up //g')" \
-		-theme "$HOME"/.config/i3/config/rofi-themes/PowerMenu.rasi
+		-theme "$HOME"/.config/i3/config_dir/rofi-themes/PowerMenu.rasi
 }
 
 selected=$(printf '%s\n' "$_options" | cut -d'|' -f1 | rofi_cmd)

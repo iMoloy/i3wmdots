@@ -104,4 +104,4 @@ ENGINE="Default"
 
 CUSTOM_DIR="/path/to/your/wallpapers/directory"
 DEFAULT_WALL="/home/moy/.config/i3/rices/pastel/walls/chameleon-cherry-blossom-pink-poetic-scene-desktop-wallpaper-4k.jpg"
-ANIMATED_WALL="$HOME/.config/i3/config/assets/animated_wall.mp4"
+ANIMATED_WALL="$HOME/.config/i3/config_dir/assets/animated_wall.mp4"

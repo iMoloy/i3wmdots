@@ -17,7 +17,7 @@ if [ "$1" = "--type" ]; then
     shift
 fi
 
-rofi_theme="$HOME/.config/i3/config/rofi-themes/Pass.rasi"
+rofi_theme="$HOME/.config/i3/config_dir/rofi-themes/Pass.rasi"
 prefix="${PASSWORD_STORE_DIR:-$HOME/.password-store}"
 
 # Main Menu
