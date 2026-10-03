@@ -1,2 +1,0 @@
-The following dependencies failed, please install manually:
- i3 i3
