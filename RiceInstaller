@@ -143,8 +143,9 @@ install_aur_dependencies() {
     logo "Installing AUR dependencies via paru..."
     sleep 2
 
-    if ! command -v paru >/dev/null 2>&1; then
+    if ! command -v paru >/dev/null 2>&1 || ! paru --version >/dev/null 2>&1; then
         printf "%b\n" "${BLD}${CYE}Installing PARU AUR helper...${CNC}"
+        rm -rf "$HOME/.paru_build"
         git clone https://aur.archlinux.org/paru.git "$HOME/.paru_build"
         (cd "$HOME/.paru_build" && makepkg -si --noconfirm)
         rm -rf "$HOME/.paru_build"
