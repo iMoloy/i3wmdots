@@ -1,16 +1,16 @@
 #!/bin/sh
 
-sed -i "$HOME/.config/i3/config/picom/picom.conf" \
+sed -i "$HOME/.config/i3/config_dir/picom/picom.conf" \
     -e "s/shadow-color = .*/shadow-color = \"${SHADOW_C}\"/" \
     -e "s/^corner-radius = .*/corner-radius = ${P_CORNER_R}/"
 
-sed -i "$HOME/.config/i3/config/picom/picom-rules.conf" \
+sed -i "$HOME/.config/i3/config_dir/picom/picom-rules.conf" \
     -e "/#-shadow-switch/s/.*#-/\t\tshadow = ${P_SHADOWS};\t#-/" \
     -e "/#-fade-switch/s/.*#-/\t\tfade = ${P_FADE};\t#-/" \
     -e "/#-blur-switch/s/.*#-/\t\tblur-background = ${P_BLUR};\t#-/" \
     -e "/picom-animations/c\\        ${P_ANIMATIONS}include \"picom-animations.conf\""
 
-_write "$HOME/.config/i3/config/picom/picom-dunst-animations.conf" <<-EOF
+_write "$HOME/.config/i3/config_dir/picom/picom-dunst-animations.conf" <<-EOF
     animations = (
 
         {
