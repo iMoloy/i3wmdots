@@ -1,0 +1,42 @@
+#!/bin/sh
+# =============================================================
+# Date:    27.06.2025 11:14:42
+#
+#
+# Licensed under GPL-3.0 license
+# =============================================================
+
+# Some vars
+i3_dir="$HOME/.config/i3"
+read -r current_theme < "$i3_dir"/.theme
+
+# List themes (rutas completas; sin forks de basename)
+themes=$(find "$i3_dir/themes/" -mindepth 1 -maxdepth 1 -type d ! -name ".*" | sort)
+
+IFS='
+'
+
+# Find current theme
+selected_index=-1
+index=0
+for theme in $themes; do
+    [ "${theme##*/}" = "$current_theme" ] && { selected_index=$index; break; }
+    index=$((index + 1))
+done
+
+# Show the rofi selection menu.
+selected=$(
+    for theme in $themes; do
+        name=${theme##*/}
+        printf "%s\000icon\037%s/preview.webp\n" "$name" "$theme"
+    done | rofi -dmenu -p "theme-selector" \
+                -theme "$i3_dir/includes/rofi-themes/RiceSelector.rasi" \
+                -selected-row "$selected_index"
+)
+unset IFS
+
+# If a valid option was selected, write the value to the configuration file and change theme.
+if [ -n "$selected" ] && [ "$selected" != "$current_theme" ]; then
+    echo "$selected" > "$i3_dir"/.theme
+    "${i3_dir}"/scripts/load-theme
+fi

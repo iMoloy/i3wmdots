@@ -1,0 +1,85 @@
+
+configuration {
+    modi:                        "drun";
+    show-icons:                  true;
+    drun-display-format:         "{name}";
+}
+
+@import "shared.rasi"
+
+window {
+    enabled:                     true;
+    fullscreen:                  false;
+    width:                       100%;
+    transparency:                "real";
+    cursor:                      "default";
+    spacing:                     0em;
+    padding:                     0em;
+    border:                      0em;
+    border-radius:               0em;
+    border-color:                transparent;
+    background-color:            transparent;
+}
+
+mainbox {
+    enabled:                     true;
+    children:                    [ "listview" ];
+    background-color:            @background;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     6;
+    lines:                       1;
+    spacing:                     1.875em;
+    padding:                     1.25em 1.875em;
+    cycle:                       true;
+    dynamic:                     false;
+    scrollbar:                   false;
+    layout:                      vertical;
+    reverse:                     false;
+    fixed-height:                true;
+    fixed-columns:               true;
+    cursor:                      "default";
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+element {
+    enabled:                     true;
+    orientation:                 horizontal;
+    spacing:                     0em;
+    padding:                     0.188em;
+    border-radius:               1.25em;
+    cursor:                      pointer;
+    background-color:            transparent;
+    text-color:                  @foreground;
+}
+
+@media(max-aspect-ratio: 1.8) {
+    element {
+        orientation:             vertical;
+    }
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+element-icon {
+    size:                        25%;
+	border-radius:				 1.25em;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}
+
+element-text {
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+    padding:                     0.625em 0em 0.5em 0em;
+    cursor:                      inherit;
+    background-color:            transparent;
+    text-color:                  inherit;
+}

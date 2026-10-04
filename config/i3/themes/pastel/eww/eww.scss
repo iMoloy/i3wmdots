@@ -1,0 +1,158 @@
+// Colors //
+$bg: #f5eee6;
+$borderbg: #161616;
+$fg: #151515;
+$magenta: #c5abff;
+$gray: #e6dfd7;
+
+// Global //
+* {
+  all: unset;
+  font-family: "Clarity City", "JetBrainsMono NF";
+  color: $fg;
+}
+
+tooltip {
+  background-color: $bg;
+  color: $fg;
+  font-weight: Bold;
+  font-size: 0.85rem;
+}
+
+//----- Main Bar widget -----//
+
+.allbars {
+  margin: 0.125em 0.5em;
+}
+
+.mainbars {
+  background-color: $bg;
+  border: 0.062em solid $borderbg;
+  border-radius: 0.5em;
+  padding: 0.25rem 0.6rem;
+  box-shadow: 0.062em 0.062em 0.188em 0em $borderbg;
+}
+
+.icons {
+  background-repeat: no-repeat;
+  background-size: 1.25em;
+  min-height: 1.25em;
+  min-width: 1.25em;
+}
+
+.icon-power {
+  background-repeat: no-repeat;
+  background-size: 1.125em;
+  min-height: 1.125em;
+  min-width: 1.125em;
+}
+
+.infotext {
+  background-color: $gray;
+  border-radius: 0.75em;
+  padding: 0.062em 0.375em;
+  font-size: 0.82rem;
+  font-weight: bold;
+}
+
+.infotext-pac {
+  background-color: $magenta;
+  border-radius: 0.75em;
+  padding: 0.062em 0.375em;
+  font-size: 0.82rem;
+  font-weight: bold;
+}
+
+//----- Music -----//
+
+.album_art {
+  background-repeat: no-repeat;
+  background-size: 1.375em;
+  min-height: 1.375em;
+  min-width: 1.375em;
+  border-radius: 0.375em;
+}
+
+.song-info {
+  min-width: 7.5em;
+}
+
+.song {
+  font-size: 0.82rem;
+  font-weight: bold;
+}
+
+.artist {
+  font-size: 0.72rem;
+  font-weight: bold;
+}
+
+.player-toggle {
+  font-family: "Material Design Icons Desktop";
+  font-size: 1.15rem;
+}
+
+.player-previous,
+.player-next {
+  font-family: "Material Design Icons Desktop";
+  font-size: 0.95rem;
+}
+
+//----- Clock -----//
+
+.time {
+  font-size: 0.82rem;
+  font-weight: bold;
+}
+
+.date {
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.weathericon {
+  font-family: "Font Awesome 6 Free Solid";
+  font-size: 1.15rem;
+  font-weight: normal;
+}
+
+.weathertemp {
+  font-size: 0.82rem;
+  font-weight: bold;
+}
+
+.weathercity {
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.audio-box {
+  background-color: $bg;
+  border: 0.062em solid $borderbg;
+  border-radius: 0.75em;
+  padding: 0.5rem 0.8rem;
+}
+
+.speaker_icon {
+  background-size: 3.438em;
+  background-image: url("images/volume.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 3.438em;
+  min-width: 3.438em;
+  margin: 0 0.562em 0 0;
+  border-radius: 0.75em;
+}
+
+.speaker_bar scale trough highlight {
+  background-color: #67d4f1;
+  border-radius: 1.5em;
+}
+
+.speaker_bar scale trough {
+  background-color: $bg;
+  border: 0.188em solid $borderbg;
+  border-radius: 1.5em;
+  min-height: 0.812em;
+  min-width: 7.5em;
+}

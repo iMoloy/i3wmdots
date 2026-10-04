@@ -1,0 +1,49 @@
+#!/bin/sh
+# =============================================================
+# Script Name: AutoScaler
+# Description: Dynamically detects screen resolution and scales
+#              Xft.dpi, GTK, and Qt scale factors automatically.
+#              Writes env vars to ~/.config/i3/.scale_env so they
+#              can be sourced by other scripts.
+# =============================================================
+
+SCALE_ENV="$HOME/.config/i3/.scale_env"
+
+# Get primary monitor resolution (Height)
+RES_H=$(xrandr | grep ' connected' | grep -o '[0-9]*x[0-9]*' | head -n1 | cut -d'x' -f2)
+
+# Default to 1080 if detection fails
+[ -z "$RES_H" ] && RES_H=1080
+
+if [ "$RES_H" -ge 2160 ]; then
+    DPI=192
+    SCALE=2
+elif [ "$RES_H" -ge 1440 ]; then
+    DPI=144
+    SCALE=1.5
+elif [ "$RES_H" -le 720 ]; then
+    DPI=72
+    SCALE=0.75
+else
+    DPI=96
+    SCALE=1
+fi
+
+# Update Xresources
+if grep -q "Xft.dpi:" "$HOME/.Xresources" 2>/dev/null; then
+    sed -i "s/^Xft.dpi:.*/Xft.dpi: $DPI/" "$HOME/.Xresources"
+else
+    echo "Xft.dpi: $DPI" >> "$HOME/.Xresources"
+fi
+xrdb -merge "$HOME/.Xresources"
+
+# Write env vars to a file so child processes can source them
+cat > "$SCALE_ENV" << EOF
+export GDK_SCALE=$SCALE
+export QT_SCALE_FACTOR=$SCALE
+export GDK_DPI_SCALE=1
+export AUTOSCALER_DPI=$DPI
+EOF
+
+# Source immediately for current session
+. "$SCALE_ENV"

@@ -1,0 +1,66 @@
+#!/bin/sh
+# =============================================================
+# Date:    03.02.2025 20:31:58
+#
+# Dependencies:
+#   → i3, polybar, eww
+#
+# Licensed under GPL-3.0 license
+# =============================================================
+
+# Configuration
+read -r current_theme <"$HOME"/.config/i3/.theme
+THEME_CONFIG="$HOME/.config/i3/themes/$current_theme/theme.bash"
+eww_bar_path="$HOME/.config/i3/themes/$current_theme/eww"
+
+# Get padding value from theme.bash
+get_paddings() {
+    awk -F'"' '
+        /^TOP_PADDING/    { top = $2 }
+        /^BOTTOM_PADDING/ { bottom = $2 }
+        /^LEFT_PADDING/   { left = $2 }
+        /^RIGHT_PADDING/  { right = $2 }
+        END { print top, bottom, left, right }
+    ' "$THEME_CONFIG"
+}
+
+set_padding() {
+    _gap=$(( ($1 + $2 + $3 + $4) / 4 ))
+    i3-msg gaps inner all set "$_gap"
+}
+
+is_eww_theme() {
+    [ "$current_theme" = "eclipse" ] || [ "$current_theme" = "glass" ] || [ "$current_theme" = "pastel" ] || [ -d "$eww_bar_path" ]
+}
+
+toggle_bar() {
+    _action="$1"
+
+    if is_eww_theme; then
+        if [ "$_action" = "hide" ]; then
+            eww -c "$eww_bar_path" close-all
+        else
+            for m in $(i3-msg -t get_outputs | jq -r '.[].name'); do
+                eww -c "$eww_bar_path" open bar --id "$m" --arg monitor="$m"
+            done
+        fi
+    else
+        polybar-msg cmd "$_action"
+    fi
+}
+
+toggle_bars() {
+    if [ "$1" = "hide" ]; then
+        set_padding 2 2 2 2
+        toggle_bar hide
+    else
+        set_padding $(get_paddings)
+        toggle_bar show
+    fi
+}
+
+case "$1" in
+    -h|--hide)   toggle_bars hide ;;
+    -u|--unhide) toggle_bars unhide ;;
+    *)	echo "Uso: $0 [-h|--hide] [-u|--unhide]" ;;
+esac

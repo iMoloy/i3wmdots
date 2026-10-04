@@ -26,32 +26,32 @@
 
 Welcome to **i3wmdots** — an aesthetically refined, ultra-fast, and highly modular **i3 Window Manager** desktop environment designed for Arch Linux.
 
-Engineered for daily productivity, coding, and multimedia, this setup combines lightweight performance (<500MB idle RAM) with a state-of-the-art visual experience: 8 handcrafted themes, dynamic on-the-fly rice switching, dual status-bar ecosystems (Polybar & Eww), intelligent wallpaper engines, and the preconfigured **moy-sddm** display manager.
+Engineered for daily productivity, coding, and multimedia, this setup combines lightweight performance (<500MB idle RAM) with a state-of-the-art visual experience: 8 handcrafted themes, dynamic on-the-fly theme switching, dual status-bar ecosystems (Polybar & Eww), intelligent wallpaper engines, and the preconfigured **moy-sddm** display manager.
 
 ---
 
 ## 🎨 Themes Showcase
 
-Switch effortlessly between **8 distinct, fully-synchronized rices** on the fly without closing applications or restarting I3.
+Switch effortlessly between **8 distinct, fully-synchronized themes** on the fly without closing applications or restarting I3.
 
 | **Dracula** (Polybar) | **Eclipse** (Eww) |
 | :---: | :---: |
-| <img src="config/i3/rices/dracula/preview.webp" width="100%" alt="Dracula" /> | <img src="config/i3/rices/eclipse/preview.webp" width="100%" alt="Eclipse" /> |
+| <img src="config/i3/themes/dracula/preview.webp" width="100%" alt="Dracula" /> | <img src="config/i3/themes/eclipse/preview.webp" width="100%" alt="Eclipse" /> |
 | *Signature dark theme with neon purple and pink accents* | *Ultra-minimal dark workspace with custom Eww status bar* |
 
 | **Everforest** (Polybar) | **Glass** (Eww) |
 | :---: | :---: |
-| <img src="config/i3/rices/everforest/preview.webp" width="100%" alt="Everforest" /> | <img src="config/i3/rices/glass/preview.webp" width="100%" alt="Glass" /> |
+| <img src="config/i3/themes/everforest/preview.webp" width="100%" alt="Everforest" /> | <img src="config/i3/themes/glass/preview.webp" width="100%" alt="Glass" /> |
 | *Natural, soothing green palette crafted for comfort* | *Modern frosted translucent widgets powered by Eww* |
 
 | **Nord** (Polybar) | **Pastel** (Eww) |
 | :---: | :---: |
-| <img src="config/i3/rices/nord/preview.webp" width="100%" alt="Nord" /> | <img src="config/i3/rices/pastel/preview.webp" width="100%" alt="Pastel" /> |
+| <img src="config/i3/themes/nord/preview.webp" width="100%" alt="Nord" /> | <img src="config/i3/themes/pastel/preview.webp" width="100%" alt="Pastel" /> |
 | *Arctic, north-bluish elegant and clean aesthetic* | *Soft pastel aesthetic with smooth gradients & Eww bar* |
 
 | **TokyoNight** (Polybar) | **Zen** (Polybar) |
 | :---: | :---: |
-| <img src="config/i3/rices/tokyonight/preview.webp" width="100%" alt="TokyoNight" /> | <img src="config/i3/rices/zen/preview.webp" width="100%" alt="Zen" /> |
+| <img src="config/i3/themes/tokyonight/preview.webp" width="100%" alt="TokyoNight" /> | <img src="config/i3/themes/zen/preview.webp" width="100%" alt="Zen" /> |
 | *Celebrated dark theme inspired by Tokyo city night lights* | *Serene, low-contrast Japanese-inspired aesthetic* |
 
 ---
@@ -74,13 +74,13 @@ This setup comes preconfigured with [**moy-sddm**](https://github.com/iMoloy/moy
 ## 🚀 Features
 
 ### 🔄 Dynamic On-the-Fly Theme Switching
-- Press `Super + x` to open the **RiceSelector** rofi menu with live visual previews.
-- Press `Super + r` to launch the comprehensive **RiceEditor GUI** for fine-tuning bar padding, borders, fonts, and animations.
+- Press `Super + x` to open the **themeSelector** rofi menu with live visual previews.
+- Press `Super + r` to launch the comprehensive **themeEditor GUI** for fine-tuning bar padding, borders, fonts, and animations.
 - Themes instantly synchronize color palettes across Kitty, Polybar, Eww, Dunst, GTK, Rofi, and Micro.
 
 ### 🖼️ Multi-Engine Wallpaper Support
 1. **Default:** Curated theme-specific default wallpaper.
-2. **Random:** Random wallpaper picked from the active theme's `walls/` directory.
+2. **Random:** Random wallpaper picked from the active theme's `wallpapers/` directory.
 3. **CustomDir:** Random wallpaper from any user-defined folder.
 4. **Animated:** Live video wallpapers (.mp4, .mkv, .gif) powered by `xwinwrap`.
 5. **Slideshow:** Automatic periodical wallpaper cycling.
@@ -93,7 +93,7 @@ This setup comes preconfigured with [**moy-sddm**](https://github.com/iMoloy/moy
 - **Power Menu & Screen Locker:** Fast session controller with `i3lock-color`.
 
 ### 🐚 High-Performance Shell & Terminal
-- **Kitty Terminal:** JetBrainsMono NF typography, custom slanted powerline tabs, and dynamic rice colors.
+- **Kitty Terminal:** JetBrainsMono NF typography, custom slanted powerline tabs, and dynamic theme colors.
 - **Modular Zsh:** Pure Zsh environment with `fzf-tab` interactive file previews, syntax highlighting, and auto-suggestions.
 
 ---
@@ -116,8 +116,8 @@ This setup comes preconfigured with [**moy-sddm**](https://github.com/iMoloy/moy
 | `Super` + `s` | System Optimizer (Stacer) |
 | `Super` + `m` | Terminal Music Player (ncmpcpp) |
 | `Super` + `space` | Fcitx5 Bangla Input Switcher |
-| `Super` + `x` | Theme / Rice Selector (Rofi) |
-| `Super` + `r` | RiceEditor GUI |
+| `Super` + `x` | Theme / theme Selector (Rofi) |
+| `Super` + `r` | themeEditor GUI |
 | `Super` + `Ctrl` + `r` | Resize Mode |
 | `Super` + `q` | Close Focused Window |
 | `Super` + `Shift` + `r` | Restart I3 |
@@ -142,16 +142,16 @@ This setup comes preconfigured with [**moy-sddm**](https://github.com/iMoloy/moy
    cd i3wmdots
    ```
 
-2. **Make `RiceInstaller` executable and run:**
+2. **Make `install.sh` executable and run:**
    ```bash
-   chmod +x RiceInstaller
-   ./RiceInstaller
+   chmod +x install.sh
+   ./install.sh
    ```
 
 3. **What the installer automates:**
    - Installs official packages via `pacman`.
-   - Installs AUR packages via `paru` (e.g. `eww-git`, `i3lock-color`, `xwinwrap-0.9-bin`, `fzf-tab-git`, `brave-origin-bin`, `visual-studio-code-bin`, `zapzap-bin`, `stacer-bin`).
-   - Backs up any existing configuration safely to `~/.RiceBackup/<timestamp>`.
+   - Installs AUR packages via `paru` or `yay` (auto-detected) — e.g. `eww-git`, `i3lock-color`, `xwinwrap-0.9-bin`, `fzf-tab-git`, `brave-origin-bin`, `visual-studio-code-bin`, `stacer-bin`.
+   - Backs up any existing configuration safely to `~/.themeBackup/<timestamp>`.
    - Deploys configurations, scripts, and fonts.
    - Sets up **SDDM** with the [**moy-sddm**](https://github.com/iMoloy/moy-sddm) theme and disables conflicting display managers.
    - Configures user services (`mpd`, `ArchUpdates.timer`).
@@ -170,10 +170,10 @@ This setup comes preconfigured with [**moy-sddm**](https://github.com/iMoloy/moy
 i3wmdots/
 ├── config/
 │   ├── i3/
-│   │   ├── bin/               # Helper scripts (RiceSelector, WallSelect, etc.)
-│   │   ├── config_dir/        # Core modules, picom, rofi-themes
+│   │   ├── scripts/           # Helper scripts (theme-selector, WallSelect, etc.)
+│   │   ├── includes/          # Core modules, picom, rofi-themes
 │   │   ├── eww/               # Eww widgets (cheatsheet, profilecard, welcome)
-│   │   ├── rices/             # 8 Handcrafted themes (dracula, glass, etc.)
+│   │   ├── themes/            # 8 Handcrafted themes (dracula, glass, etc.)
 │   │   └── config             # i3 initialization script and keybindings
 │   ├── clipcat/               # Clipboard manager configuration
 │   ├── gtk-3.0/               # GTK 3.0 settings
@@ -188,7 +188,7 @@ i3wmdots/
 │   ├── asciiart/              # ASCII banners
 │   ├── bin/                   # Additional CLI scripts (sysfetch, colorscript)
 │   └── fonts/                 # Custom font assets
-├── RiceInstaller              # Automated installation script
+├── install.sh                 # Automated installation script
 └── README.md
 ```
 

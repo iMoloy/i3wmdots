@@ -1,0 +1,144 @@
+
+configuration {
+	hover-select:				true;
+	me-select-entry:			"";
+	me-accept-entry:			"MousePrimary";
+}
+
+@import "shared.rasi"
+
+window {
+    transparency:                "real";
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  false;
+    width:                       37.5em;
+    x-offset:                    0em;
+    y-offset:                    0em;
+    margin:                      0em;
+    padding:                     0em;
+    border:                      0.062em solid;
+    border-radius:               0em;
+    border-color:                @selected;
+    cursor:                      "default";
+    background-color:            @background;
+}
+
+mainbox {
+    enabled:                     true;
+    spacing:                     0.625em;
+    margin:                      0em;
+    padding:                     0.938em;
+    background-color:            transparent;
+    children:                    [ "inputbar", "message", "listview" ];
+}
+
+inputbar {
+    enabled:                     true;
+    spacing:                     0.625em;
+    padding:                     0em;
+    border:                      0em;
+    border-radius:               0em;
+    border-color:                @selected;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    children:                    [ "textbox-prompt-colon", "prompt"];
+}
+
+textbox-prompt-colon {
+    enabled:                     true;
+    expand:                      false;
+    font:                        "JetbrainsMono NF Bold 10";
+    str:                         "";
+    padding:                     0.625em 1.062em 0.625em 0.75em;
+    border-radius:               0em;
+    background-color:            @active;
+    text-color:                  @background;
+}
+
+prompt {
+    enabled:                     true;
+    padding:                     0.625em;
+    border-radius:               0em;
+    background-color:            @selected;
+    text-color:                  @background;
+}
+
+message {
+    enabled:                     true;
+    margin:                      0em;
+    padding:                     0.625em;
+    border:                      0em solid;
+    border-radius:               0em;
+    border-color:                @selected;
+    background-color:            @background-alt;
+    text-color:                  @foreground;
+}
+
+textbox {
+    background-color:            inherit;
+    text-color:                  inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.0;
+}
+
+listview {
+    enabled:                     true;
+    columns:                     5;
+    lines:                       1;
+    cycle:                       true;
+    scrollbar:                   false;
+    layout:                      vertical;
+    
+    spacing:                     0.625em;
+    background-color:            transparent;
+    cursor:                      "default";
+}
+
+element {
+    enabled:                     true;
+    padding:                     1.375em 1.375em 1.375em 0.625em;
+    border:                      0em solid;
+    border-radius:               0em;
+    border-color:                @selected;
+    background-color:            transparent;
+    text-color:                  @foreground;
+    cursor:                      pointer;
+}
+
+element-text {
+    font:                        "JetbrainsMono NF Bold 20";
+    background-color:            transparent;
+    text-color:                  inherit;
+    cursor:                      inherit;
+    vertical-align:              0.5;
+    horizontal-align:            0.5;
+}
+
+element normal.normal,
+element alternate.normal {
+    border:                      0.062em solid;
+    border-radius:               0em;
+    border-color:                @selected;
+    background-color:            @background;
+    text-color:                  @foreground;
+}
+
+element normal.urgent,
+element alternate.urgent,
+element selected.active {
+    background-color:            @urgent;
+    text-color:                  @background;
+}
+
+element normal.active,
+element alternate.active,
+element selected.urgent {
+    background-color:            @active;
+    text-color:                  @background;
+}
+
+element selected.normal {
+    background-color:            @selected;
+    text-color:                  @background;
+}

@@ -141,7 +141,7 @@
 						 (box :orientation "v"
 							  :spacing 3
 							  :halign "end"
-							  :style "margin-left: 10px;"
+							  :style "margin-left: 0.625em;"
 							  (label :class "os-icon"
 									 :halign "start"
 									 :text "󰣇")
@@ -288,6 +288,6 @@
 ;; Windows ;;
 
 (defwindow launchermenu
-    :geometry (geometry :x "80px" :y "0px" :anchor "left center")
+    :geometry (geometry :x "5.0em" :y "0em" :anchor "left center")
     :wm-ignore true
     (launchermenu))

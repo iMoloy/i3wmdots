@@ -3,7 +3,7 @@ Description=Check for available updates & sync polybar or eww bar
 
 [Service]
 Type=oneshot
-ExecStart=%h/.config/i3/bin/Updates --sync-polybar
+ExecStart=%h/.config/i3/scripts/Updates --sync-polybar
 
 [Install]
 WantedBy=default.target

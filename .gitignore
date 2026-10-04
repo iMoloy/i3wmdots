@@ -17,6 +17,9 @@ __pycache__/
 # I3 runtime state markers
 .first_run_done
 .sys
+.scale_env
+.wallpaper
+.theme
 
 # Logs
 *.log

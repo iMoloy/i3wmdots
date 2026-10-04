@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=Theme Editor
+GenericName=Theme Editor
+Comment=Edit some aspects of the I3 themes
+Exec=theme-editor
+Icon=preferences-desktop-theme
+StartupNotify=true
+Type=Application
+Categories=GTK;Settings;Customization;
+Keywords=theme;themes;appearance;customization;window manager;desktop;rice;configuration;personalization;settings;

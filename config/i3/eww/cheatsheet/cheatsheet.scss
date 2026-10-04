@@ -15,7 +15,7 @@
   font-family: JetBrainsMono NF;
   font-style: Italic;
   font-size: 0.8rem;
-  margin-top: 3px;
+  margin-top: 0.188em;
   color: $fg;
 }
 
@@ -29,9 +29,9 @@
   font-size: 0.8rem;
   background-color: $green;
   color: $bg;
-  margin: 8px 0;
-  padding: 2px 0;
-  border-radius: 2px;
+  margin: 0.5em 0;
+  padding: 0.125em 0;
+  border-radius: 0.125em;
 }
 
 .category-system {
@@ -40,9 +40,9 @@
   font-size: 0.8rem;
   background-color: $red;
   color: $bg;
-  margin: 8px 0;
-  padding: 2px 0;
-  border-radius: 2px;
+  margin: 0.5em 0;
+  padding: 0.125em 0;
+  border-radius: 0.125em;
 }
 
 .category-nodes {
@@ -51,9 +51,9 @@
   font-size: 0.8rem;
   background-color: $yellow;
   color: $bg;
-  margin: 8px 0;
-  padding: 2px 0;
-  border-radius: 2px;
+  margin: 0.5em 0;
+  padding: 0.125em 0;
+  border-radius: 0.125em;
 }
 
 .category-workspaces {
@@ -62,9 +62,9 @@
   font-size: 0.8rem;
   background-color: $magenta;
   color: $bg;
-  margin: 8px 0;
-  padding: 2px 0;
-  border-radius: 2px;
+  margin: 0.5em 0;
+  padding: 0.125em 0;
+  border-radius: 0.125em;
 }
 
 .category-move {
@@ -73,9 +73,9 @@
   font-size: 0.8rem;
   background-color: $archicon;
   color: $bg;
-  margin: 8px 0;
-  padding: 2px 0;
-  border-radius: 2px;
+  margin: 0.5em 0;
+  padding: 0.125em 0;
+  border-radius: 0.125em;
 }
 
 .category-apps {
@@ -84,9 +84,9 @@
   font-size: 0.8rem;
   background-color: $green;
   color: $bg;
-  margin: 8px 0;
-  padding: 2px 0;
-  border-radius: 2px;
+  margin: 0.5em 0;
+  padding: 0.125em 0;
+  border-radius: 0.125em;
 }
 
 .category-preselection {
@@ -95,9 +95,9 @@
   font-size: 0.8rem;
   background-color: $blue;
   color: $bg;
-  margin: 8px 0;
-  padding: 2px 0;
-  border-radius: 2px;
+  margin: 0.5em 0;
+  padding: 0.125em 0;
+  border-radius: 0.125em;
 }
 
 .category-others {
@@ -106,9 +106,9 @@
   font-size: 0.8rem;
   background-color: $red;
   color: $bg;
-  margin: 8px 0;
-  padding: 2px 0;
-  border-radius: 2px;
+  margin: 0.5em 0;
+  padding: 0.125em 0;
+  border-radius: 0.125em;
 }
 
 .category-power {
@@ -117,9 +117,9 @@
   font-size: 0.8rem;
   background-color: $cyan;
   color: $bg;
-  margin: 8px 0;
-  padding: 2px 0;
-  border-radius: 2px;
+  margin: 0.5em 0;
+  padding: 0.125em 0;
+  border-radius: 0.125em;
 }
 
 .keys {
@@ -137,19 +137,19 @@
 
 scrollbar {
   trough {
-    padding-left: 30px; /* hack to make the scrollbar expand when the mouse is almost close */
-    min-width: 3px;
+    padding-left: 1.875em; /* hack to make the scrollbar expand when the mouse is almost close */
+    min-width: 0.188em;
 
     slider {
-      min-width: 4px;
-      border-radius: 999999px;
+      min-width: 0.25em;
+      border-radius: 62499.938em;
       transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
       background-color: $green;
     }
   }
 
   &:hover trough slider {
-    min-width: 8px;
+    min-width: 0.5em;
     background-color: $green;
   }
 }

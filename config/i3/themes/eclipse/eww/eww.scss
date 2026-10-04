@@ -1,0 +1,275 @@
+* {
+  all: unset;
+  font-family: "JetBrainsMono NF";
+}
+
+// Variable Colors
+$bar-bg: rgba(255, 255, 255, 0.35);
+$card-bg: #000000;
+$card-border: rgba(255, 255, 255, 0.12);
+$foreground: #ffffff;
+$red: #dd6777;
+$green: #90ceaa;
+$yellow: #ecd3a0;
+$blue: #86aaec;
+$magenta: #c296eb;
+$cyan: #93cee9;
+$white: #ffffff;
+$archlogo: #000000;
+
+window {
+  background-color: transparent;
+}
+
+// The bar (Frosted Translucent White Glass)
+.eww_bar {
+  background-color: $bar-bg;
+  border-right: 0.062em solid rgba(255, 255, 255, 0.25);
+  margin: 0;
+  padding: 0.125em 0;
+}
+
+// Launcher (Arch Logo enlarged 1.75em)
+.launcher_icon {
+  color: $archlogo;
+  font-family: "Material Design Icons Desktop";
+  font-size: 1.75em;
+  padding: 0.25em 0;
+  margin: 0;
+
+  &:hover {
+    color: #0f94d2;
+  }
+}
+
+// Workspaces (Pure Black Floating Card - 1.25em icons)
+.works {
+  font-family: "Material Design Icons Desktop";
+  padding: 0.312em 0;
+  background-color: $card-bg;
+  border: 0.062em solid $card-border;
+  border-radius: 0.625em;
+  box-shadow: 0 0.25em 0.875em rgba(0, 0, 0, 0.3);
+  min-width: 2.375em;
+}
+
+.workspace-focused {
+  font-size: 1.25em;
+  color: #8ea6c4;
+  margin: 0.125em 0;
+}
+
+.workspace-occupied {
+  font-size: 1.25em;
+  color: #ffffff;
+  margin: 0.125em 0;
+}
+
+.workspace-empty {
+  font-size: 1.25em;
+  color: #555c6e;
+  margin: 0.125em 0;
+}
+
+// Music Card (Pure Black Floating Card - 1.25em icons)
+.music_card {
+  background-color: $card-bg;
+  border: 0.062em solid $card-border;
+  border-radius: 0.625em;
+  box-shadow: 0 0.25em 0.875em rgba(0, 0, 0, 0.3);
+  padding: 0.312em 0;
+  min-width: 2.375em;
+}
+
+.music_btn {
+  font-family: "Material Design Icons Desktop";
+  font-size: 1.25em;
+  color: #a5b6cf;
+  padding: 0.125em 0;
+  margin: 0;
+
+  &:hover {
+    color: $blue;
+  }
+}
+
+.music_btn_play {
+  font-family: "Material Design Icons Desktop";
+  font-size: 1.25em;
+  color: $yellow;
+  padding: 0.125em 0;
+  margin: 0;
+
+  &.active {
+    color: $green;
+  }
+
+  &:hover {
+    color: $cyan;
+  }
+}
+
+// System Tray
+.tray menu {
+  padding: 0.312em 0.312em;
+  background-color: #000000;
+  border: 0.062em solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.5em;
+
+  > menuitem {
+    font-family: "JetBrainsMono NF";
+    font-size: 0.875em;
+    padding: 0.125em 0.312em;
+    color: #ffffff;
+
+    &:disabled label {
+      color: #555555;
+    }
+
+    &:hover {
+      background-color: #222222;
+    }
+  }
+
+  separator {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding-top: 0.062em;
+
+    &:last-child {
+      padding: unset;
+    }
+  }
+}
+
+// Control (Pure Black Floating Card - 1.25em icons, 0.812em text)
+.control {
+  padding: 0.312em 0;
+  background-color: $card-bg;
+  border: 0.062em solid $card-border;
+  border-radius: 0.625em;
+  box-shadow: 0 0.25em 0.875em rgba(0, 0, 0, 0.3);
+  min-width: 2.375em;
+}
+
+.trayicon {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.25em;
+  min-height: 1.25em;
+  min-width: 1.25em;
+  margin: 0.125em 0;
+}
+
+.netspeed_text {
+  font-size: 0.812em;
+  font-weight: bold;
+  color: $cyan;
+  margin: 0.062em 0;
+}
+
+.bar-updates-text {
+  font-size: 0.812em;
+  font-weight: bold;
+  color: #8ea6c4;
+  margin: 0.062em 0;
+}
+
+scale trough {
+  all: unset;
+  background-color: #1a1a1a;
+  border-radius: 0.25em;
+  min-height: 2.5em;
+  min-width: 0.375em;
+  margin: 0.125em 0;
+}
+
+.volbar trough highlight {
+  background: linear-gradient($red, $magenta, $blue, $cyan);
+  border-radius: 0.25em;
+}
+
+// Date Card (Pure Black Floating Card - 0.812em text)
+.date_card {
+  background-color: $card-bg;
+  border: 0.062em solid $card-border;
+  border-radius: 0.625em;
+  box-shadow: 0 0.25em 0.875em rgba(0, 0, 0, 0.3);
+  padding: 0.312em 0;
+  min-width: 2.375em;
+}
+
+.day_text {
+  font-size: 0.812em;
+  font-weight: bold;
+  color: $magenta;
+  margin: 0;
+}
+
+.date_text {
+  font-size: 0.812em;
+  font-weight: bold;
+  color: $white;
+  margin: 0.062em 0 0 0;
+}
+
+.month_text {
+  font-size: 0.812em;
+  font-weight: bold;
+  color: $blue;
+  margin: 0.062em 0 0 0;
+}
+
+// Time Card (Pure Black Floating Card - 0.812em text)
+.time_card {
+  background-color: $card-bg;
+  border: 0.062em solid $card-border;
+  border-radius: 0.625em;
+  box-shadow: 0 0.25em 0.875em rgba(0, 0, 0, 0.3);
+  padding: 0.312em 0;
+  min-width: 2.375em;
+}
+
+.time_hour {
+  font-size: 0.812em;
+  font-weight: bold;
+  color: $yellow;
+  margin: 0;
+}
+
+.time_min {
+  font-size: 0.812em;
+  font-weight: bold;
+  color: $white;
+  margin: 0.062em 0 0 0;
+}
+
+.time_ampm {
+  font-size: 0.812em;
+  font-weight: bold;
+  color: $cyan;
+  margin: 0.062em 0 0 0;
+}
+
+// Power Menu (Pure Black Floating Card - 1.25em icons)
+.powermenu {
+  min-width: 2.375em;
+  padding: 0.062em 0;
+  background-color: $card-bg;
+  border: 0.062em solid $card-border;
+  border-radius: 0.625em;
+  box-shadow: 0 0.25em 0.875em rgba(0, 0, 0, 0.3);
+}
+
+.button-suspend,
+.button-reb,
+.button-lock,
+.button-quit,
+.button-powermenu,
+.button-off {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.25em;
+  min-height: 1.25em;
+  min-width: 1.25em;
+  margin: 0.125em 0;
+}

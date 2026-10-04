@@ -1,0 +1,32 @@
+#!/bin/bash
+# =============================================================
+# Script Name: check-deps
+# Description: Checks if required dependencies for the i3 environment are met.
+# =============================================================
+
+REQUIRED_CMDS=(
+    "i3" "polybar" "eww" "rofi" "picom" "kitty" "jq"
+    "xrandr" "feh" "clipcatd" "dunst" "xsettingsd" "convert" "autotiling"
+)
+
+MISSING_CMDS=()
+
+echo "[*] Scanning system dependencies for i3 dots..."
+
+for cmd in "${REQUIRED_CMDS[@]}"; do
+    if ! command -v "$cmd" &> /dev/null; then
+        MISSING_CMDS+=("$cmd")
+    fi
+done
+
+if [ ${#MISSING_CMDS[@]} -eq 0 ]; then
+    echo "[+] All required dependencies are installed! Your system is healthy."
+    exit 0
+else
+    echo "[-] The following required tools are missing:"
+    for cmd in "${MISSING_CMDS[@]}"; do
+        echo "    -> $cmd"
+    done
+    echo "[!] Please install them using your package manager (pacman/yay/paru)."
+    exit 1
+fi

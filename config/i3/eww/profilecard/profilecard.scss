@@ -25,12 +25,12 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  min-height: 65px;
-  min-width: 65px;
+  min-height: 4.062em;
+  min-width: 4.062em;
   //border: .2rem solid $bg;
   border-radius: 100%;
-  box-shadow: 0 0 7px 1px rgba($fg, 0.3);
-  margin: 10px -8px 10px 10px;
+  box-shadow: 0 0 0.438em 0.062em rgba($fg, 0.3);
+  margin: 0.625em -0.5em 0.625em 0.625em;
 }
 
 .user-host {
@@ -61,7 +61,7 @@
 }
 
 .btn-info:hover {
-  text-shadow: 0 0 2px $fg;
+  text-shadow: 0 0 0.125em $fg;
 }
 
 .launcher-pfp-label {
